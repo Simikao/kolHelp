@@ -1,3 +1,5 @@
+'use strict'
+
 const cat = { 
     name: 'Filemon', 
     age: 6 
@@ -5,7 +7,8 @@ const cat = {
 
 cat.description = `kot ma na imię ${cat.name} i ma ${cat.age} lat`;
 
-const catExtra = cat + {breed: "sijamski", colour: "biały"}
+cat.breed= "sijamski"
+cat.colour= "biały"
+cat.description += `, jest to kot ${cat.breed} i kolor jego futra to ${cat.colour}`
 
-
-console.log(catExtra);
+console.log(cat);

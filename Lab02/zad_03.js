@@ -1,3 +1,6 @@
+'use strict'
+//to be finished
+
 const testArray = [1, 2, null, [4, undefined, 11, 10], 6, [7, null, 0], null, 9]; 
 const testArray2 = [1, 2, null, [4, undefined, [11, 10]], 6, [7, null, 0], null, 9]; 
 

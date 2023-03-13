@@ -1,3 +1,5 @@
+'use strict'
+
 const cat = { 
     name: 'Filemon', 
     age: 6 
