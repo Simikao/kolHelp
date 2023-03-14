@@ -1,7 +1,5 @@
 'use strict'
 
-'use Strict'
-
 const persons = [
     { name: 'Jan', age: 22 },
     { name: 'Grzegorz', age: 19 },
@@ -16,7 +14,9 @@ const persons = [
 // }
 
 function sortPerson(dict) {
-    return Object.entries(dict).forEach(([key,value]) => [key,value].filter((key) => key == name));
+    const tmp=[];
+    dict.filter((a) => a.age !== null).sort((a,b) => a.name > b.name ? 1 : -1).forEach((nam) => tmp.push(nam.name));
+    return tmp;
 }
 
 console.log(sortPerson(persons));
