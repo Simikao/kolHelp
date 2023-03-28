@@ -1,0 +1,16 @@
+{
+  "name": "Lab06",
+  "version": "1.0.0",
+  "description": "Exercise files",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.36.0",
+    "nodemon": "^2.0.22"
+  },
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "eslint": "eslint '**/*.js'",
+    "zad1": "nodemon /zad_01.js"
+  }
+}
