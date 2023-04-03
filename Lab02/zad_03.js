@@ -6,9 +6,9 @@ const testArray2 = [1, 2, null, [4, undefined, [11, 10]], 6, [7, null, 0], null,
 
 function hasSubArray(arr){
     for (const element of arr){
-        if (typeof element === "object" && element !== null)
-        console.log(element);
-        return [...arr];
+        if (typeof element === "object" && element !== null){
+            console.log(element);
+            return [...arr]}
     }
     return [];
 }

@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const persons = [
     { id: 1, firstName: 'Adam', lastName: 'Nowak' },
@@ -12,7 +12,7 @@ const tmp = persons.map((el) => {
     return {
         label: el.firstName + ' ' + el.lastName,
         value: el
-    }
+    };
 });
 
 const tmp2 = persons.map((el) => ({
@@ -24,4 +24,4 @@ const tmp2 = persons.map((el) => ({
 console.log(tmp);
 console.log(tmp2);
 
-// The map() method is used to transform the elements of an array, whereas the forEach() method is used to loop through the elements of an array. 
+// The map() method is used to transform the elements of an array, whereas the forEach() method is used to loop through the elements of an array.
