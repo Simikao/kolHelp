@@ -30,3 +30,40 @@
 //      staff: [ 'Mrs Norris', 'Argus Filch' ]
 // }
 // }
+
+const hogwarts = require("./potter.js").hogwartArray;
+
+// const result = hogwarts
+//     .map((houseFix) => {
+//         if (houseFix.house === '') {
+//             houseFix.house = "noHouse"
+//         }
+//         return houseFix
+//     })
+//     .reduce((acc, current) => {
+//         let obj = {};
+//         if (current.house in acc) {
+//             obj = acc[current.house];
+//         }
+//         if (!current.hogwartsStaff && !current.hogwartsStudent) {
+//             const list = [];
+//             const details = {
+//                 "none": list.push(current.name)
+//             };
+//             return details;
+//         } else if (current.hogwartsStaff) {
+//             const list = [];
+//             const details = {
+//                 "staff" : list.push(current.name)
+//             };
+//             return details;
+//         } else {
+//             const list = [];
+//             const details = {
+//                 "student": list.push(current.name)
+//             };
+//             return details;
+//         }
+//         obj = {...obj, details}
+
+// }, {})

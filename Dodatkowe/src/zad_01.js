@@ -10,8 +10,16 @@ const hogwarts = require("./potter.js").hogwartArray;
 
 const result = hogwarts
         .filter((el) => el.alive === true)
+        .map((houseFix) => {
+            if (houseFix.house === '') {
+                houseFix.house = "noHouse";
+                return houseFix;
+            } else {
+                return houseFix;
+            }
+        })
         .reduce((acc, person) => {
-            if(!acc.includes(person.house) && person.house !== "") {
+            if(!acc.includes(person.house)) {
                 acc.push(person.house);
             }
             return acc;
@@ -48,14 +56,28 @@ console.log(result);
 
 // const mages = hogwarts
 //     .filter((el) => el.alive === true)
-//     .reduce((acc, current) => {
-//         const cośtam = {
-//             'name': [current.name],
-//             // if possible, use if instead ?:
-//             'type': (!current.hogwartsStudent && current.hogwartsStaff) ? "staff" : (current.hogwartsStudent && !current.hogwartsStaff) ? "student" : "none"
-//         };
-//         return {...acc, ...cośtam};
-//     }, {});
+    // .reduce((acc, current) => {
+    //     const cośtam = {
+    //         'name': [current.name],
+    //         // if possible, use if instead ?:
+    //         'type': (!current.hogwartsStudent && current.hogwartsStaff) ? "staff" : (current.hogwartsStudent && !current.hogwartsStaff) ? "student" : "none"
+    //     };
+    //     return {...acc, ...cośtam};
+    // }, {});
+
+
+    // .reduce((acc, current) => {
+    //     let obj = {};
+    //     if (current.house in acc) {
+    //         obj = acc[current.house];
+    //     }
+    //     const person = {
+    //         name: current.name,
+    //         type: (!current.hogwartsStaff && !current.hogwartsStudent)? "none" : (current.hogwartsStaff)? "staff" : "student",
+    //     };
+    //     obj = {...obj,  person}
+    //     }
+    // })
 
 
 // console.log(mages);
