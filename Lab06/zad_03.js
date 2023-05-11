@@ -1,0 +1,1 @@
+// (poprawa kolokwium 2020) Pobierz plik ships.js, a następnie wykorzystując zawarte w nim dane, zwróć stringa zawierającego wypisane osoby z podziałem na statki, w jakich są załogą oraz manufacturer tego statku. W swoim rozwiązaniu użyj jedynie funkcji wbudowanych, a sam obiekt powinien zostać wygenerowany za pomocą reduce.

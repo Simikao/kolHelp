@@ -45,8 +45,9 @@
       "semi-style": ["error", "last"],
       "init-declarations": [ "error", "always" ],
       "block-scoped-var": "error",
+      "strict": [ "error", "never" ],
       "no-undef": "error",
-      // "no-unused-vars": "error"
+      "no-unused-vars": "error"
     }
   }
   

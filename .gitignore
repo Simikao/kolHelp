@@ -1,4 +1,5 @@
 # Logs
+log/
 logs
 *.log
 npm-debug.log*
@@ -123,8 +124,15 @@ dist
 .vscode-test
 
 # yarn v2
+.yarn/
 .yarn/cache
 .yarn/unplugged
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+#babel
+es5out/
+
+
+#personal
