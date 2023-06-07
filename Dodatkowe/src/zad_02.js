@@ -67,3 +67,39 @@ const hogwarts = require("./potter.js").hogwartArray;
 //         obj = {...obj, details}
 
 // }, {})
+
+
+const groupCharactersByHouse = () => {
+const characters = hogwarts.reduce((result, character) => {
+    const { name, house, hogwartsStudent, hogwartsStaff } = character;
+
+    const role = hogwartsStaff ? 'staff' : hogwartsStudent ? 'students' : 'none';
+    const houseKey = house || 'noHouse';
+
+    if (!result[houseKey]) {
+    result[houseKey] = {
+        students: [],
+        staff: [],
+        none: [],
+    };
+    }
+
+    result[houseKey][role].push(name);
+
+    return result;
+}, {});
+
+return characters;
+};
+
+// console.log(groupCharactersByHouse());
+
+
+const result = hogwarts.reduce((acc, current) => {
+    const house = current.house.length === 0 ? "noHouse" : current.house;
+
+    acc = acc[house];
+    return {...acc};
+}, {});
+
+console.log(result);
