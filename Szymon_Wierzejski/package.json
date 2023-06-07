@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "eslint": "^8.40.0"
+  },
+  "scripts": {
+    "eslint": "eslint '**/*.js'",
+    "zad1": "node src/zad_01.js",
+    "zad2": "node src/zad_02.js"
+  }
+}

@@ -1,0 +1,1 @@
+tar -czf Szymon_Wierzejski.tar.gz src/ .eslintrc.json package.json yarn.lock
