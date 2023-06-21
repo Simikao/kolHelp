@@ -1,0 +1,16 @@
+{
+  "name": "Lab06",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.43.0"
+  },
+  "scripts": {
+    "eslint": "eslint '**/*.js'",
+    "zad1": "node src/zad_01.js",
+    "zad2": "node src/zad_02.js",
+    "zad3": "node src/zad_03.js",
+    "zad4": "node src/zad_04.js"
+  }
+}
