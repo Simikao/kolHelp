@@ -42,23 +42,49 @@ class QuestionService {
     }
 
     updateAnswer(questionId, correction) {
-        if (this.arr[questionId]) {
-            this.arr[questionId]["answer"] = correction;
-            console.log(this.arr[questionId]);
-        }
+        // if (this.arr[questionId-1]) {
+        //     this.arr[questionId-1]["answer"] = correction;
+        //     console.log(this.arr[questionId]);
+        // }
+        this.arr.reduce((_, current) => {
+            if (current.id === questionId) {
+                current.answer = correction;
+            }
+        }, null);
     }
 
     updateQuestion(obj) {
-        const ourId = obj.id;
-        const result = this.arr.reduce((acc, current) => {
-            if (current.id === ourId) {
-                current = obj;
-                return current;
-            }
-            return acc;
-        }, []);
-        console.log(this.arr);
+        const keys = ["id", "user", "question"];
+
+        const check = keys.reduce((bool, current) => {
+            if (obj[current]) {
+                return bool;
+            } else return false;
+        }, true);
+        // function checkHelper(key, obj = obj) {
+        //     if (!this.#checkObj(obj, key)) {
+        //         console.error("Operacja nie powiodła się");
+        //     }
+        // }
+        if (check && obj.user.id) {
+            const ourId = obj.id;
+            this.arr.reduce((_, current) => {
+                if (current.id === ourId) {
+                    current.timestamp = new Date();
+                    current.question = obj.question;
+                    current.user = obj.user;
+                }
+            }, []);
+            console.log(this.arr);
+        } else {
+            console.error("Operacja nie powiodła się");
+        }
+
     }
+
+    // #checkObj(obj, key) {
+    //     return !obj[key];
+    // }
 }
 
 const test = new QuestionService(gpt);
@@ -70,12 +96,13 @@ test.createNewQuestion(3, "aaa");
 console.log(gpt.length);
 // console.log(gpt);
 test.updateAnswer(3, "my answer");
+console.log(gpt[2]);
 
-// const newQuestion = {
-//     id: 20,
-//     question: "Jakie są sposoby na poprawę koncentracji i efektywności w pracy?",
-//     user: {
-//     id: 1
-//     }
-// };
-// test.updateQuestion(newQuestion);
+const newQuestion = {
+    id: 20,
+    question: "aaaaaaaaaaaaa?",
+    user: {
+        id: 1
+    }
+};
+test.updateQuestion(newQuestion);
