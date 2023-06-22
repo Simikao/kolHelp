@@ -16,7 +16,7 @@ const funTab1 = [
 
 const poKolei = (arr, cb) => {
     const arr2 = [];
-    const counter = 0;
+    let counter = 0;
     const isDone = () => {
         if (counter === arr.length){
             return arr2;
@@ -25,6 +25,7 @@ const poKolei = (arr, cb) => {
     const worker = (index, previousResult) => {
         if (index === arr.length) {
             cb(arr2);
+            return;
         }
         arr[index](previousResult, result => {
             arr2.push(result);
@@ -37,11 +38,13 @@ const poKolei = (arr, cb) => {
 };
 
 
-const razem = (funTab1, funTab2 cb) => {
-    const arr = [funTab1, funTab2]
+const razem = (func, funTab1, funTab2, cb) => {
+    const arr = [funTab1, funTab2];
     arr.reduce((previous, current) => {
-        
-    }, null)
+        previous.push(func(current, cb));
+        return previous;
+
+    }, []);
 };
 
-razem(poKolei(funTab1), (x) => console.log(x))
+razem(poKolei, funTab1, funTab1, (x) => console.log(x));
