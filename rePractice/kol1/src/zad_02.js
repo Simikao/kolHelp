@@ -17,8 +17,13 @@ class QuestionService {
             }
             return acc;
         }, null);
-        console.log(questionObj.question);
-        return questionObj.question;
+        // console.log(questionObj.question);
+        if (questionObj === null) {
+            return questionObj;
+        } else {
+            return questionObj.question;
+        }
+
     }
 
     createNewQuestion(userId, questionString = "") {
@@ -46,11 +51,13 @@ class QuestionService {
         //     this.arr[questionId-1]["answer"] = correction;
         //     console.log(this.arr[questionId]);
         // }
-        this.arr.reduce((_, current) => {
+        this.arr = this.arr.reduce((acc, current) => {
             if (current.id === questionId) {
                 current.answer = correction;
             }
-        }, null);
+            acc.push(current);
+            return acc;
+        }, []);
     }
 
     updateQuestion(obj) {
@@ -68,28 +75,53 @@ class QuestionService {
         // }
         if (check && obj.user.id) {
             const ourId = obj.id;
-            this.arr.reduce((_, current) => {
+            obj.user = users.reduce((acc, current) => {
+                if (obj.user.id === current.id) {
+                    return current;
+                }
+                return acc;
+            }, {});
+            this.arr = this.arr.reduce((acc, current) => {
                 if (current.id === ourId) {
                     current.timestamp = new Date();
                     current.question = obj.question;
                     current.user = obj.user;
                 }
+                acc.push(current);
+                return acc;
             }, []);
-            console.log(this.arr);
+            // console.log(this.arr);
         } else {
             console.error("Operacja nie powiodła się");
         }
 
     }
 
-    // #checkObj(obj, key) {
-    //     return !obj[key];
-    // }
+    deleteQuestion(id) {
+        this.arr = this.arr.reduce((acc, current) => {
+            if (current.id !== id) {
+                acc.push(current);
+            }
+            return acc;
+        }, []);
+    }
+
+    getQuestionsByUser(userId) {
+        return this.arr.reduce((acc, current) => {
+            if (current.user.id === userId) {
+                acc.push({
+                    id: current.id,
+                    question: current.question
+                });
+            }
+            return acc;
+        }, []);
+    }
 }
 
 const test = new QuestionService(gpt);
 
-test.getQuestionsById(3);
+console.log(test.getQuestionsById(3));
 console.log(new Date());
 // console.log(gpt[gpt.length-1]);
 test.createNewQuestion(3, "aaa");
@@ -106,3 +138,6 @@ const newQuestion = {
     }
 };
 test.updateQuestion(newQuestion);
+console.log(test.getQuestionsByUser(1));
+test.updateAnswer(31, "Nowa odpowiedź na pytanie");
+console.log(test.getQuestionsById(31));
